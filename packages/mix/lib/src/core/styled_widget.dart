@@ -52,10 +52,10 @@ abstract class StyledWidget extends StatelessWidget {
     Widget Function(BuildContext context) builder,
   ) {
     return SpecBuilder(
-      orderOfModifiers: orderOfModifiers,
+      builder: builder,
       style: style,
       inherit: inherit,
-      builder: builder,
+      orderOfModifiers: orderOfModifiers,
     );
   }
 
@@ -71,12 +71,12 @@ abstract class StyledWidget extends StatelessWidget {
 class SpecBuilder extends StatelessWidget {
   // Requires a builder function and accepts optional parameters
   const SpecBuilder({
-    super.key,
-    List<Type>? orderOfModifiers,
+    required this.builder,
     this.controller,
+    super.key,
     this.style = const Style.empty(),
     this.inherit = false,
-    required this.builder,
+    List<Type>? orderOfModifiers,
   }) : orderOfModifiers = orderOfModifiers ?? const [];
 
   bool get _hasWidgetStateVariant => style.variants.values
