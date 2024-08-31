@@ -379,7 +379,7 @@ void main() {
         ..alignment.center()
         ..padding(8);
 
-      final attr = util.build();
+      final attr = util.value.styles.attributeOfType<BoxSpecAttribute>()!;
 
       expect(util, isA<Attribute>());
       expect(attr.alignment, Alignment.center);

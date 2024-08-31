@@ -70,7 +70,7 @@ final class ClipRRectModifierSpec
   final CustomClipper<RRect>? clipper;
   final Clip? clipBehavior;
 
-  ClipRRectModifierSpec({
+  const ClipRRectModifierSpec({
     this.borderRadius,
     this.clipper,
     this.clipBehavior,
@@ -123,7 +123,7 @@ final class ClipTriangleModifierSpec
     with _$ClipTriangleModifierSpec, Diagnosticable {
   final Clip? clipBehavior;
 
-  ClipTriangleModifierSpec({this.clipBehavior});
+  const ClipTriangleModifierSpec({this.clipBehavior});
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -134,7 +134,7 @@ final class ClipTriangleModifierSpec
   @override
   Widget build(Widget child) {
     return ClipPath(
-      clipper: TriangleClipper(),
+      clipper: const TriangleClipper(),
       clipBehavior: clipBehavior ?? Clip.antiAlias,
       child: child,
     );
@@ -142,7 +142,7 @@ final class ClipTriangleModifierSpec
 }
 
 class TriangleClipper extends CustomClipper<Path> {
-  TriangleClipper();
+  const TriangleClipper();
   @override
   Path getClip(Size size) {
     final path = Path();

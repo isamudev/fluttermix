@@ -7,18 +7,13 @@ abstract class MixUtility<T extends Attribute, V> extends NestedStyleAttribute {
 
   MixUtility(this.attributeBuilder) : super(Style());
 
+  static T selfBuilder<T>(T value) => value;
   T builder(V v) {
     final attribute = attributeBuilder(v);
     value = value.add(attribute);
 
-    return build();
+    return attribute;
   }
-
-  T build() {
-    return value.styles.attributeOfType<T>() as T;
-  }
-
-  static T selfBuilder<T>(T value) => value;
 }
 
 abstract class ScalarUtility<T extends Attribute, V> extends MixUtility<T, V> {
