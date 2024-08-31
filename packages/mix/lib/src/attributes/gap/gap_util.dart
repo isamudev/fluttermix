@@ -5,7 +5,7 @@ import 'spacing_side_dto.dart';
 
 final class GapUtility<T extends Attribute>
     extends MixUtility<T, SpacingSideDto> {
-  const GapUtility(super.builder);
+  GapUtility(super.builder);
 
   T call(double value) => builder(SpacingSideDto(value));
 

@@ -10,7 +10,7 @@ import 'shadow_dto.dart';
 /// instances by transforming a list of [BoxShadow] objects into a list of [ShadowDto] objects.
 final class ShadowListUtility<T extends Attribute>
     extends MixUtility<T, List<ShadowDto>> {
-  const ShadowListUtility(super.builder);
+  ShadowListUtility(super.builder);
 
   /// Creates an [Attribute] instance from a list of [BoxShadow] objects.
   ///

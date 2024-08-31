@@ -6,7 +6,6 @@ import '../../core/utility.dart';
 import '../../theme/tokens/space_token.dart';
 import 'edge_insets_dto.dart';
 
-@immutable
 final class SpacingUtility<T extends Attribute>
     extends DtoUtility<T, EdgeInsetsGeometryDto, EdgeInsetsGeometry> {
   late final directional = SpacingDirectionalUtility(builder);
@@ -60,7 +59,6 @@ final class SpacingUtility<T extends Attribute>
   }
 }
 
-@immutable
 final class SpacingDirectionalUtility<T extends Attribute>
     extends DtoUtility<T, EdgeInsetsGeometryDto, EdgeInsetsGeometry> {
   late final all = SpacingSideUtility(
@@ -104,9 +102,8 @@ final class SpacingDirectionalUtility<T extends Attribute>
   }
 }
 
-@immutable
 class SpacingSideUtility<T extends Attribute> extends MixUtility<T, double> {
-  const SpacingSideUtility(super.builder);
+  SpacingSideUtility(super.builder);
 
   T call(double value) => builder(value);
 

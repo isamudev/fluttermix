@@ -369,4 +369,37 @@ void main() {
       );
     });
   });
+
+  // group test fluent api
+  group('BoxSpecUtility fluent', () {
+    test('fluent behavior', () {
+      final box = BoxSpecUtility.self;
+
+      final util = box
+        ..alignment.center()
+        ..padding(8);
+
+      final attr = util.build();
+
+      expect(util, isA<Attribute>());
+      expect(attr.alignment, Alignment.center);
+      expect(attr.padding, const EdgeInsets.all(8.0).toDto());
+      expect(attr.margin, null);
+
+      final style = Style(util);
+
+      final boxAttribute = style.styles.attributeOfType<BoxSpecAttribute>();
+
+      expect(boxAttribute?.alignment, Alignment.center);
+      expect(boxAttribute?.padding, const EdgeInsets.all(8.0).toDto());
+      expect(boxAttribute?.margin, null);
+
+      final mixData = style.of(MockBuildContext());
+      final boxSpec = BoxSpec.from(mixData);
+
+      expect(boxSpec.alignment, Alignment.center);
+      expect(boxSpec.padding, const EdgeInsets.all(8.0));
+      expect(boxSpec.margin, null);
+    });
+  });
 }

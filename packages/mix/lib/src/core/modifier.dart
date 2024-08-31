@@ -43,5 +43,5 @@ abstract class WidgetModifierUtility<
     T extends Attribute,
     D extends WidgetModifierSpecAttribute<Value>,
     Value extends WidgetModifierSpec<Value>> extends MixUtility<T, D> {
-  const WidgetModifierUtility(super.builder);
+  WidgetModifierUtility(super.builder);
 }

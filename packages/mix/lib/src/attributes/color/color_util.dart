@@ -9,19 +9,17 @@ import 'color_directives.dart';
 import 'color_dto.dart';
 import 'material_colors_util.dart';
 
-@immutable
 abstract base class BaseColorUtility<T extends Attribute>
     extends MixUtility<T, ColorDto> {
-  const BaseColorUtility(super.builder);
+  BaseColorUtility(super.builder);
 
   T _buildColor(Color color) => builder(ColorDto(color));
 }
 
-@immutable
 base class FoundationColorUtility<T extends Attribute, C extends Color>
     extends BaseColorUtility<T> with ColorDirectiveMixin<T> {
   final C color;
-  const FoundationColorUtility(super.builder, this.color);
+  FoundationColorUtility(super.builder, this.color);
 
   T call() => _buildColor(color);
   @override
@@ -35,7 +33,7 @@ base class FoundationColorUtility<T extends Attribute, C extends Color>
 /// instances by transforming a list of [Color] objects into a list of [ColorDto] objects.
 final class ColorListUtility<T extends Attribute>
     extends MixUtility<T, List<ColorDto>> {
-  const ColorListUtility(super.builder);
+  ColorListUtility(super.builder);
 
   /// Creates an [Attribute] instance from a list of [Color] objects.
   ///
@@ -46,7 +44,6 @@ final class ColorListUtility<T extends Attribute>
   }
 }
 
-@immutable
 final class ColorUtility<T extends Attribute> extends BaseColorUtility<T>
     with ColorDirectiveMixin<T>, MaterialColorsMixin<T>, BasicColorsMixin<T> {
   ColorUtility(super.builder);
@@ -109,7 +106,6 @@ base mixin ColorDirectiveMixin<T extends Attribute> on BaseColorUtility<T> {
   T brighten(int percentage) => directive(BrightenColorDirective(percentage));
 }
 
-@immutable
 class OpacityColorDirective extends ColorDirective {
   final double opacity;
   const OpacityColorDirective(this.opacity);
@@ -121,7 +117,6 @@ class OpacityColorDirective extends ColorDirective {
   get props => [opacity];
 }
 
-@immutable
 class AlphaColorDirective extends ColorDirective {
   final int alpha;
   const AlphaColorDirective(this.alpha);
@@ -133,7 +128,6 @@ class AlphaColorDirective extends ColorDirective {
   get props => [alpha];
 }
 
-@immutable
 class DarkenColorDirective extends ColorDirective {
   final int percentage;
   const DarkenColorDirective(this.percentage);
@@ -145,7 +139,6 @@ class DarkenColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class LightenColorDirective extends ColorDirective {
   final int percentage;
   const LightenColorDirective(this.percentage);
@@ -157,7 +150,6 @@ class LightenColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class SaturateColorDirective extends ColorDirective {
   final int percentage;
   const SaturateColorDirective(this.percentage);
@@ -169,7 +161,6 @@ class SaturateColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class DesaturateColorDirective extends ColorDirective {
   final int percentage;
   const DesaturateColorDirective(this.percentage);
@@ -181,7 +172,6 @@ class DesaturateColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class TintColorDirective extends ColorDirective {
   final int percentage;
   const TintColorDirective(this.percentage);
@@ -193,7 +183,6 @@ class TintColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class ShadeColorDirective extends ColorDirective {
   final int percentage;
   const ShadeColorDirective(this.percentage);
@@ -205,7 +194,6 @@ class ShadeColorDirective extends ColorDirective {
   get props => [percentage];
 }
 
-@immutable
 class BrightenColorDirective extends ColorDirective {
   final int percentage;
   const BrightenColorDirective(this.percentage);

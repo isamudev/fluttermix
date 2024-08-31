@@ -12,7 +12,7 @@ part 'scalar_util.g.dart';
 @MixableClassUtility(type: Alignment)
 final class AlignmentUtility<T extends Attribute>
     extends MixUtility<T, AlignmentGeometry> with _$AlignmentUtility {
-  const AlignmentUtility(super.builder);
+  AlignmentUtility(super.builder);
 
   /// Creates an [Attribute] instance with a custom [Alignment] or [AlignmentDirectional] value.
   ///
@@ -38,7 +38,7 @@ final class AlignmentGeometryUtility<T extends Attribute>
 final class AlignmentDirectionalUtility<T extends Attribute>
     extends MixUtility<T, AlignmentDirectional>
     with _$AlignmentDirectionalUtility {
-  const AlignmentDirectionalUtility(super.builder);
+  AlignmentDirectionalUtility(super.builder);
   T only({double? y, double? start}) {
     return builder(AlignmentDirectional(start ?? 0, y ?? 0));
   }
@@ -47,13 +47,13 @@ final class AlignmentDirectionalUtility<T extends Attribute>
 @MixableClassUtility()
 final class FontFeatureUtility<T extends Attribute>
     extends MixUtility<T, FontFeature> with _$FontFeatureUtility {
-  const FontFeatureUtility(super.builder);
+  FontFeatureUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class DurationUtility<T extends Attribute> extends MixUtility<T, Duration>
     with _$DurationUtility {
-  const DurationUtility(super.builder);
+  DurationUtility(super.builder);
 
   T microseconds(int microseconds) =>
       builder(Duration(microseconds: microseconds));
@@ -73,25 +73,25 @@ final class FontSizeUtility<T extends Attribute> extends SizingUtility<T> {
 @MixableClassUtility()
 final class FontWeightUtility<T extends Attribute>
     extends MixUtility<T, FontWeight> with _$FontWeightUtility {
-  const FontWeightUtility(super.builder);
+  FontWeightUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class TextDecorationUtility<T extends Attribute>
     extends MixUtility<T, TextDecoration> with _$TextDecorationUtility {
-  const TextDecorationUtility(super.builder);
+  TextDecorationUtility(super.builder);
 }
 
 @MixableClassUtility(type: Curves)
 final class CurveUtility<T extends Attribute> extends MixUtility<T, Curve>
     with _$CurveUtility {
-  const CurveUtility(super.builder);
+  CurveUtility(super.builder);
 }
 
 @MixableClassUtility(generateCallMethod: false)
 final class OffsetUtility<T extends Attribute> extends MixUtility<T, Offset>
     with _$OffsetUtility {
-  const OffsetUtility(super.builder);
+  OffsetUtility(super.builder);
 
   T as(Offset offset) => builder(offset);
 }
@@ -99,7 +99,7 @@ final class OffsetUtility<T extends Attribute> extends MixUtility<T, Offset>
 @MixableClassUtility(generateCallMethod: false)
 final class RadiusUtility<T extends Attribute> extends MixUtility<T, Radius>
     with _$RadiusUtility {
-  const RadiusUtility(super.builder);
+  RadiusUtility(super.builder);
 
   T call(double radius) => builder(Radius.circular(radius));
 
@@ -109,22 +109,22 @@ final class RadiusUtility<T extends Attribute> extends MixUtility<T, Radius>
 @MixableClassUtility()
 final class RectUtility<T extends Attribute> extends MixUtility<T, Rect>
     with _$RectUtility {
-  const RectUtility(super.builder);
+  RectUtility(super.builder);
 }
 
 final class PaintUtility<T extends Attribute> extends ScalarUtility<T, Paint> {
-  const PaintUtility(super.builder);
+  PaintUtility(super.builder);
 }
 
 final class LocaleUtility<T extends Attribute>
     extends ScalarUtility<T, Locale> {
-  const LocaleUtility(super.builder);
+  LocaleUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class ImageProviderUtility<T extends Attribute>
     extends MixUtility<T, ImageProvider> with _$ImageProviderUtility {
-  const ImageProviderUtility(super.builder);
+  ImageProviderUtility(super.builder);
 
   /// Creates an [Attribute] instance with [ImageProvider.network].
   /// @param url The URL of the image.
@@ -137,13 +137,13 @@ final class ImageProviderUtility<T extends Attribute>
 @MixableClassUtility()
 final class TextHeightBehaviorUtility<T extends Attribute>
     extends MixUtility<T, TextHeightBehavior> with _$TextHeightBehaviorUtility {
-  const TextHeightBehaviorUtility(super.builder);
+  TextHeightBehaviorUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class GradientTransformUtility<T extends Attribute>
     extends MixUtility<T, GradientTransform> with _$GradientTransformUtility {
-  const GradientTransformUtility(super.builder);
+  GradientTransformUtility(super.builder);
 
   /// Creates an [Attribute] instance with a [GradientRotation] value.
   T rotate(double radians) => builder(GradientRotation(radians));
@@ -152,29 +152,29 @@ final class GradientTransformUtility<T extends Attribute>
 @MixableClassUtility()
 final class Matrix4Utility<T extends Attribute> extends MixUtility<T, Matrix4>
     with _$Matrix4Utility {
-  const Matrix4Utility(super.builder);
+  Matrix4Utility(super.builder);
 }
 
 @MixableClassUtility()
 final class FontFamilyUtility<T extends Attribute> extends MixUtility<T, String>
     with _$FontFamilyUtility {
-  const FontFamilyUtility(super.builder);
+  FontFamilyUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class TextScalerUtility<T extends Attribute>
     extends MixUtility<T, TextScaler> with _$TextScalerUtility {
-  const TextScalerUtility(super.builder);
+  TextScalerUtility(super.builder);
 }
 
 @MixableClassUtility()
 final class TableColumnWidthUtility<T extends Attribute>
     extends MixUtility<T, TableColumnWidth> with _$TableColumnWidthUtility {
-  const TableColumnWidthUtility(super.builder);
+  TableColumnWidthUtility(super.builder);
 }
 
 @MixableClassUtility()
 class TableBorderUtility<T extends Attribute> extends MixUtility<T, TableBorder>
     with _$TableBorderUtility<T> {
-  const TableBorderUtility(super.builder);
+  TableBorderUtility(super.builder);
 }

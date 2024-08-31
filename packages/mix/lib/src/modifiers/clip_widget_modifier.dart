@@ -70,7 +70,7 @@ final class ClipRRectModifierSpec
   final CustomClipper<RRect>? clipper;
   final Clip? clipBehavior;
 
-  const ClipRRectModifierSpec({
+  ClipRRectModifierSpec({
     this.borderRadius,
     this.clipper,
     this.clipBehavior,
@@ -123,7 +123,7 @@ final class ClipTriangleModifierSpec
     with _$ClipTriangleModifierSpec, Diagnosticable {
   final Clip? clipBehavior;
 
-  const ClipTriangleModifierSpec({this.clipBehavior});
+  ClipTriangleModifierSpec({this.clipBehavior});
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
@@ -134,7 +134,7 @@ final class ClipTriangleModifierSpec
   @override
   Widget build(Widget child) {
     return ClipPath(
-      clipper: const TriangleClipper(),
+      clipper: TriangleClipper(),
       clipBehavior: clipBehavior ?? Clip.antiAlias,
       child: child,
     );
@@ -142,7 +142,7 @@ final class ClipTriangleModifierSpec
 }
 
 class TriangleClipper extends CustomClipper<Path> {
-  const TriangleClipper();
+  TriangleClipper();
   @override
   Path getClip(Size size) {
     final path = Path();
@@ -160,7 +160,7 @@ class TriangleClipper extends CustomClipper<Path> {
 
 final class ClipPathModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, ClipPathModifierSpecAttribute> {
-  const ClipPathModifierSpecUtility(super.builder);
+  ClipPathModifierSpecUtility(super.builder);
 
   T call({CustomClipper<Path>? clipper, Clip? clipBehavior}) {
     return builder(
@@ -174,7 +174,7 @@ final class ClipPathModifierSpecUtility<T extends Attribute>
 
 final class ClipRRectModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, ClipRRectModifierSpecAttribute> {
-  const ClipRRectModifierSpecUtility(super.builder);
+  ClipRRectModifierSpecUtility(super.builder);
   T call({
     BorderRadius? borderRadius,
     CustomClipper<RRect>? clipper,
@@ -192,7 +192,7 @@ final class ClipRRectModifierSpecUtility<T extends Attribute>
 
 final class ClipOvalModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, ClipOvalModifierSpecAttribute> {
-  const ClipOvalModifierSpecUtility(super.builder);
+  ClipOvalModifierSpecUtility(super.builder);
   T call({CustomClipper<Rect>? clipper, Clip? clipBehavior}) {
     return builder(
       ClipOvalModifierSpecAttribute(
@@ -205,7 +205,7 @@ final class ClipOvalModifierSpecUtility<T extends Attribute>
 
 final class ClipRectModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, ClipRectModifierSpecAttribute> {
-  const ClipRectModifierSpecUtility(super.builder);
+  ClipRectModifierSpecUtility(super.builder);
   T call({CustomClipper<Rect>? clipper, Clip? clipBehavior}) {
     return builder(
       ClipRectModifierSpecAttribute(
@@ -218,7 +218,7 @@ final class ClipRectModifierSpecUtility<T extends Attribute>
 
 final class ClipTriangleModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, ClipTriangleModifierSpecAttribute> {
-  const ClipTriangleModifierSpecUtility(super.builder);
+  ClipTriangleModifierSpecUtility(super.builder);
   T call({Clip? clipBehavior}) {
     return builder(
       ClipTriangleModifierSpecAttribute(clipBehavior: clipBehavior),

@@ -79,7 +79,7 @@ final class TransformModifierSpecUtility<T extends Attribute>
 
 final class TransformRotateModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, Matrix4> {
-  const TransformRotateModifierSpecUtility(super.builder);
+  TransformRotateModifierSpecUtility(super.builder);
   T d90() => call(math.pi / 2);
   T d180() => call(math.pi);
   T d270() => call(3 * math.pi / 2);

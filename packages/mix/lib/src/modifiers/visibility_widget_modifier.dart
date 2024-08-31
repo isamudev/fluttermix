@@ -32,7 +32,7 @@ final class VisibilityModifierSpec
 
 final class VisibilityModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, VisibilityModifierSpecAttribute> {
-  const VisibilityModifierSpecUtility(super.builder);
+  VisibilityModifierSpecUtility(super.builder);
   T on() => call(true);
   T off() => call(false);
 

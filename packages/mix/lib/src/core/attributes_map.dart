@@ -4,7 +4,6 @@ import 'dart:collection';
 
 import '../internal/deep_collection_equality.dart';
 import 'attribute.dart';
-import 'spec.dart';
 
 // @nodoc
 class AttributeMap<T extends Attribute> {
@@ -51,7 +50,7 @@ class AttributeMap<T extends Attribute> {
 
   bool containsValue(T attribute) => _map?.containsValue(attribute) ?? false;
 
-  Attr? attributeOfType<Attr extends SpecAttribute>() => _map?[Attr] as Attr?;
+  Attr? attributeOfType<Attr extends Attribute>() => _map?[Attr] as Attr?;
 
   Iterable<Attr> whereType<Attr extends T>() => _map?.values.whereType() ?? [];
 

@@ -8,28 +8,28 @@ import '../../helpers/testing_utils.dart';
 
 void main() {
   group('Modifiers: ', () {
-    const aspectRatio =
+    final aspectRatio =
         AspectRatioModifierSpecUtility(UtilityTestAttribute.new);
-    const flexible = FlexibleModifierSpecUtility(UtilityTestAttribute.new);
-    const visibility = VisibilityModifierSpecUtility(UtilityTestAttribute.new);
+    final flexible = FlexibleModifierSpecUtility(UtilityTestAttribute.new);
+    final visibility = VisibilityModifierSpecUtility(UtilityTestAttribute.new);
     final transform = TransformModifierSpecUtility(UtilityTestAttribute.new);
 
-    const opacity = OpacityModifierSpecUtility(UtilityTestAttribute.new);
-    const rotate = RotatedBoxModifierSpecUtility(UtilityTestAttribute.new);
-    const clipPath = ClipPathModifierSpecUtility(UtilityTestAttribute.new);
-    const clipRRect = ClipRRectModifierSpecUtility(UtilityTestAttribute.new);
-    const clipOval = ClipOvalModifierSpecUtility(UtilityTestAttribute.new);
-    const clipRect = ClipRectModifierSpecUtility(UtilityTestAttribute.new);
-    const clipTriangle =
+    final opacity = OpacityModifierSpecUtility(UtilityTestAttribute.new);
+    final rotate = RotatedBoxModifierSpecUtility(UtilityTestAttribute.new);
+    final clipPath = ClipPathModifierSpecUtility(UtilityTestAttribute.new);
+    final clipRRect = ClipRRectModifierSpecUtility(UtilityTestAttribute.new);
+    final clipOval = ClipOvalModifierSpecUtility(UtilityTestAttribute.new);
+    final clipRect = ClipRectModifierSpecUtility(UtilityTestAttribute.new);
+    final clipTriangle =
         ClipTriangleModifierSpecUtility(UtilityTestAttribute.new);
     final sizedBox = SizedBoxModifierSpecUtility(UtilityTestAttribute.new);
-    const fractionallySizedBox =
+    final fractionallySizedBox =
         FractionallySizedBoxModifierSpecUtility(UtilityTestAttribute.new);
-    const intrinsicHeight =
+    final intrinsicHeight =
         IntrinsicHeightModifierSpecUtility(UtilityTestAttribute.new);
-    const intrinsicWidth =
+    final intrinsicWidth =
         IntrinsicWidthModifierSpecUtility(UtilityTestAttribute.new);
-    const align = AlignModifierSpecUtility(UtilityTestAttribute.new);
+    final align = AlignModifierSpecUtility(UtilityTestAttribute.new);
 
     test('aspectRatio creates AspectRatioModifier correctly', () {
       final aspectRatioModifier = aspectRatio(2.0);
@@ -38,7 +38,7 @@ void main() {
     });
 
     test('expanded creates FlexibleModifierUtility correctly', () {
-      const flexible = FlexibleModifierSpecUtility(UtilityTestAttribute.new);
+      final flexible = FlexibleModifierSpecUtility(UtilityTestAttribute.new);
       final flexibleModifier = flexible.expanded();
 
       expect(flexibleModifier.value.fit, FlexFit.tight);

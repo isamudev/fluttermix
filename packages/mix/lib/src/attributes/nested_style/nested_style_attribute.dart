@@ -1,14 +1,12 @@
-import 'package:flutter/widgets.dart';
-
 import '../../core/attribute.dart';
 import '../../core/factory/style_mix.dart';
 
 /// Allows to pass down Mixes as attributes for use with helpers.
-@immutable
-final class NestedStyleAttribute extends Attribute {
-  final Style value;
 
-  const NestedStyleAttribute(this.value);
+class NestedStyleAttribute extends Attribute {
+  Style value;
+
+  NestedStyleAttribute(this.value);
 
   factory NestedStyleAttribute.fromList(List<Attribute> attributes) {
     return NestedStyleAttribute(Style.create(attributes));

@@ -45,7 +45,7 @@ final class FractionallySizedBoxModifierSpec
 
 final class FractionallySizedBoxModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, FractionallySizedBoxModifierSpecAttribute> {
-  const FractionallySizedBoxModifierSpecUtility(super.builder);
+  FractionallySizedBoxModifierSpecUtility(super.builder);
 
   T call({
     AlignmentGeometry? alignment,

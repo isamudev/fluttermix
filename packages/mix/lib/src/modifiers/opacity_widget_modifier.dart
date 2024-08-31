@@ -37,6 +37,6 @@ final class OpacityModifierSpec extends WidgetModifierSpec<OpacityModifierSpec>
 
 final class OpacityModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, OpacityModifierSpecAttribute> {
-  const OpacityModifierSpecUtility(super.builder);
+  OpacityModifierSpecUtility(super.builder);
   T call(double value) => builder(OpacityModifierSpecAttribute(opacity: value));
 }

@@ -35,7 +35,7 @@ final class AspectRatioModifierSpec
 
 final class AspectRatioModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, AspectRatioModifierSpecAttribute> {
-  const AspectRatioModifierSpecUtility(super.builder);
+  AspectRatioModifierSpecUtility(super.builder);
   T call(double value) {
     return builder(AspectRatioModifierSpecAttribute(aspectRatio: value));
   }

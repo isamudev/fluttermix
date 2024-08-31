@@ -50,10 +50,8 @@ abstract class SpecAttribute<Value> extends StyledAttribute {
 }
 
 abstract class SpecUtility<Attr extends Attribute, Value extends SpecAttribute>
-    implements MixUtility<Attr, Value> {
-  @override
-  final Attr Function(Value) builder;
-  const SpecUtility(this.builder);
+    extends MixUtility<Attr, Value> {
+  SpecUtility(super.builder);
 
   Attr only();
 }

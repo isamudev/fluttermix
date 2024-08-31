@@ -38,7 +38,7 @@ final class FlexibleModifierSpec
 
 final class FlexibleModifierSpecUtility<T extends Attribute>
     extends MixUtility<T, FlexibleModifierSpecAttribute> {
-  const FlexibleModifierSpecUtility(super.builder);
+  FlexibleModifierSpecUtility(super.builder);
   FlexFitUtility<T> get fit => FlexFitUtility((fit) => call(fit: fit));
   IntUtility<T> get flex => IntUtility((flex) => call(flex: flex));
   T tight({int? flex}) =>
