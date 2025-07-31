@@ -185,6 +185,7 @@ class CurveAnimationDriver<S extends Spec<S>> extends StyleAnimationDriver<S> {
     controller.duration = _config.duration;
 
     try {
+      await Future.delayed(_config.delay);
       await controller.forward(from: 0.0);
     } on TickerCanceled {
       // Animation was cancelled - this is normal
@@ -224,52 +225,37 @@ class SpringAnimationDriver<S extends Spec<S>> extends StyleAnimationDriver<S> {
 
 class PhaseAnimationDriver<S extends Spec<S>> extends StyleAnimationDriver<S> {
   final List<S> specs;
-  final List<CurveAnimationConfig> curvesAndDurations;
+  final List<CurveAnimationConfig> curveConfigs;
   final ValueNotifier trigger;
+  final PhaseAnimationMode mode;
+
+  late final TweenSequence<S?> _tween;
 
   PhaseAnimationDriver({
     required super.vsync,
-    required this.curvesAndDurations,
+    required this.curveConfigs,
     required this.specs,
     required super.initialStyle,
     required this.trigger,
+    required this.mode,
   }) {
     trigger.addListener(_onTriggerChanged);
 
-    if (curvesAndDurations.last.onEnd != null) {
-      addOnCompleteListener(curvesAndDurations.last.onEnd!);
+    if (curveConfigs.last.onEnd != null) {
+      addOnCompleteListener(curveConfigs.last.onEnd!);
     }
+
+    _tween = mode.createTweenSequence(specs, curveConfigs);
   }
 
   void _onTriggerChanged() {
     executeAnimation();
   }
 
-  TweenSequence<S?> get _tween {
-    final items = <TweenSequenceItem<S?>>[];
-    for (int i = 0; i < specs.length; i++) {
-      final currentIndex = i % specs.length;
-      final nextIndex = (i + 1) % specs.length;
-
-      items.add(
-        TweenSequenceItem(
-          tween: SpecTween<S>(
-            begin: specs[currentIndex],
-            end: specs[nextIndex],
-          ).chain(CurveTween(curve: curvesAndDurations[currentIndex].curve)),
-          weight: curvesAndDurations[currentIndex].duration.inMilliseconds
-              .toDouble(),
-        ),
-      );
-    }
-
-    return TweenSequence(items);
-  }
-
   Duration get totalDuration {
-    return curvesAndDurations.fold(
+    return curveConfigs.fold(
       Duration.zero,
-      (acc, config) => acc + config.duration,
+      (acc, config) => acc + config.duration + config.delay,
     );
   }
 

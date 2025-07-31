@@ -16,7 +16,23 @@ class MyApp extends StatelessWidget {
   }
 }
 
-enum AnimationPhases { initial, compress, expanded }
+enum AnimationPhases {
+  initial,
+  compress,
+  expanded;
+
+  double get scale => switch (this) {
+    initial => 1,
+    compress => 0.75,
+    expanded => 1.25,
+  };
+
+  CurveAnimationConfig get config => switch (this) {
+    initial => CurveAnimationConfig.decelerate(200.ms),
+    compress => CurveAnimationConfig.decelerate(100.ms),
+    expanded => CurveAnimationConfig.bounceOut(600.ms),
+  };
+}
 
 class BlockAnimation extends StatefulWidget {
   const BlockAnimation({super.key});
@@ -26,7 +42,7 @@ class BlockAnimation extends StatefulWidget {
 }
 
 class _BlockAnimationState extends State<BlockAnimation> {
-  bool _isExpanded = false;
+  final trigger = ValueNotifier(false);
 
   @override
   Widget build(BuildContext context) {
@@ -34,28 +50,18 @@ class _BlockAnimationState extends State<BlockAnimation> {
         .color(Colors.deepPurpleAccent)
         .height(100)
         .width(100)
-        .borderRadius(BorderRadiusMix.all(Radius.circular(40)))
+        .borderRadius(BorderRadiusMix.all(Radius.circular(30)))
         .transformAlignment(Alignment.center)
         .phaseAnimation(
-          trigger: ValueNotifier(_isExpanded),
+          trigger: trigger,
           phases: AnimationPhases.values,
-          styleBuilder: (phase, style) => switch (phase) {
-            AnimationPhases.initial => style.scale(1),
-            AnimationPhases.compress => style.scale(0.75),
-            AnimationPhases.expanded => style.scale(1.25),
-          },
-          configBuilder: (phase) => switch (phase) {
-            AnimationPhases.initial => CurveAnimationConfig.decelerate(200.ms),
-            AnimationPhases.compress => CurveAnimationConfig.decelerate(100.ms),
-            AnimationPhases.expanded => CurveAnimationConfig.bounceOut(600.ms),
-          },
+          styleBuilder: (phase, style) => style.scale(phase.scale),
+          configBuilder: (phase) => phase.config,
         );
 
     return GestureDetector(
       onTap: () {
-        setState(() {
-          _isExpanded = !_isExpanded;
-        });
+        trigger.value = !trigger.value;
       },
       child: Box(style: style),
     );

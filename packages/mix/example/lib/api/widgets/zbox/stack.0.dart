@@ -22,9 +22,9 @@ class Example extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final flexStyle = StackBoxMix.stack(
-      StackMix.alignment(Alignment.bottomCenter),
-    ).withBox(BoxMix.height(100).width(100));
+    final zbox = Style.stackBox()
+        .stack(StackMix.alignment(Alignment.bottomCenter))
+        .box(BoxMix.height(100).width(100));
 
     final boxStyle =
         Style.box() //
@@ -33,7 +33,7 @@ class Example extends StatelessWidget {
             .width(100);
 
     return ZBox(
-      style: flexStyle,
+      style: zbox,
       children: [
         Box(style: boxStyle),
         Box(style: boxStyle.color(Colors.grey.shade300).height(50)),

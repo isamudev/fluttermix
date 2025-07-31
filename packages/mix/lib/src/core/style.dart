@@ -7,6 +7,7 @@ import '../specs/box/box_attribute.dart';
 import '../specs/flex/flex_attribute.dart';
 import '../specs/flexbox/flexbox_attribute.dart';
 import '../specs/icon/icon_attribute.dart';
+import '../specs/image/image_attribute.dart';
 import '../specs/stack/stack_attribute.dart';
 import '../specs/stack/stack_box_attribute.dart';
 import '../specs/text/text_attribute.dart';
@@ -43,6 +44,7 @@ abstract class Style<S extends Spec<S>> extends Mixable<Style<S>>
   static final stack = StackMix.new;
   static final stackBox = StackBoxMix.new;
   static final flex = FlexMix.new;
+  static final image = ImageMix.new;
 
   const Style({
     required List<VariantStyleAttribute<S>>? variants,

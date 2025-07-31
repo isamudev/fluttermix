@@ -17,12 +17,12 @@ import 'stack_box_spec.dart';
 /// Use this class to configure the attributes of a [ZBoxSpec] and pass it to
 /// the [ZBoxSpec] constructor.
 class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
-  final BoxMix? box;
-  final StackMix? stack;
+  final BoxMix? $box;
+  final StackMix? $stack;
 
   const StackBoxMix({
-    this.box,
-    this.stack,
+    this.$box,
+    this.$stack,
     super.modifierConfig,
     super.animation,
     super.variants,
@@ -32,12 +32,12 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
 
   /// Factory for box properties
   factory StackBoxMix.box(BoxMix value) {
-    return StackBoxMix(box: value);
+    return StackBoxMix($box: value);
   }
 
   /// Factory for stack properties
   factory StackBoxMix.stack(StackMix value) {
-    return StackBoxMix(stack: value);
+    return StackBoxMix($stack: value);
   }
 
   /// Factory for animation
@@ -60,8 +60,8 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   /// ```
   static StackBoxMix value(ZBoxSpec spec) {
     return StackBoxMix(
-      box: BoxMix.maybeValue(spec.box),
-      stack: StackMix.maybeValue(spec.stack),
+      $box: BoxMix.maybeValue(spec.box),
+      $stack: StackMix.maybeValue(spec.stack),
     );
   }
 
@@ -78,12 +78,12 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   }
 
   /// Sets box properties
-  StackBoxMix withBox(BoxMix value) {
+  StackBoxMix box(BoxMix value) {
     return merge(StackBoxMix.box(value));
   }
 
   /// Sets stack properties
-  StackBoxMix withStack(StackMix value) {
+  StackBoxMix stack(StackMix value) {
     return merge(StackBoxMix.stack(value));
   }
 
@@ -110,7 +110,10 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   /// ```
   @override
   ZBoxSpec resolve(BuildContext context) {
-    return ZBoxSpec(box: box?.resolve(context), stack: stack?.resolve(context));
+    return ZBoxSpec(
+      box: $box?.resolve(context),
+      stack: $stack?.resolve(context),
+    );
   }
 
   /// Merges the properties of this [StackBoxMix] with the properties of [other].
@@ -126,8 +129,8 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
     if (other == null) return this;
 
     return StackBoxMix(
-      box: box?.merge(other.box) ?? other.box,
-      stack: stack?.merge(other.stack) ?? other.stack,
+      $box: $box?.merge(other.$box) ?? other.$box,
+      $stack: $stack?.merge(other.$stack) ?? other.$stack,
       modifierConfig:
           $modifierConfig?.merge(other.$modifierConfig) ??
           other.$modifierConfig,
@@ -141,8 +144,8 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('box', box, defaultValue: null));
-    properties.add(DiagnosticsProperty('stack', stack, defaultValue: null));
+    properties.add(DiagnosticsProperty('box', $box, defaultValue: null));
+    properties.add(DiagnosticsProperty('stack', $stack, defaultValue: null));
   }
 
   /// The list of properties that constitute the state of this [StackBoxMix].
@@ -150,7 +153,7 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   /// This property is used by the [==] operator and the [hashCode] getter to
   /// compare two [StackBoxMix] instances for equality.
   @override
-  List<Object?> get props => [box, stack];
+  List<Object?> get props => [$box, $stack];
 }
 
 /// Utility class for configuring [ZBoxSpec] properties.
@@ -177,8 +180,8 @@ class StackBoxSpecUtility {
     List<VariantStyleAttribute<ZBoxSpec>>? variants,
   }) {
     return StackBoxMix(
-      box: box,
-      stack: stack,
+      $box: box,
+      $stack: stack,
       modifierConfig: modifierConfig,
       animation: animation,
       variants: variants,
