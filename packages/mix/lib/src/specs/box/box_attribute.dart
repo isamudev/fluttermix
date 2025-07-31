@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../animation/animation_config.dart';
+import '../../animation/animation_mixin.dart';
 import '../../core/helpers.dart';
 import '../../core/prop.dart';
+
 import '../../core/style.dart';
 import '../../modifiers/modifier_config.dart';
 import '../../modifiers/modifier_util.dart';
@@ -31,7 +33,8 @@ class BoxMix extends Style<BoxSpec>
         Diagnosticable,
         StyleModifierMixin<BoxMix, BoxSpec>,
         StyleVariantMixin<BoxMix, BoxSpec>,
-        BorderRadiusMixin<BoxMix> {
+        BorderRadiusMixin<BoxMix>,
+        StyleAnimationMixin<BoxSpec, BoxMix> {
   final Prop<AlignmentGeometry>? $alignment;
   final MixProp<EdgeInsetsGeometry>? $padding;
   final MixProp<EdgeInsetsGeometry>? $margin;
@@ -347,39 +350,6 @@ class BoxMix extends Style<BoxSpec>
     );
   }
 
-  /// Animation instance method
-  BoxMix animate(AnimationConfig animation) {
-    return merge(BoxMix.animate(animation));
-  }
-
-  /// Animation instance method
-  BoxMix phaseAnimation<T>({
-    required ValueNotifier trigger,
-    required List<T> phases,
-    required BoxMix Function(T phase, BoxMix style) styleBuilder,
-    required CurveAnimationConfig Function(T phase) configBuilder,
-    PhaseAnimationMode mode = PhaseAnimationMode.simpleLoop,
-  }) {
-    final styles = List<BoxMix>.empty(growable: true);
-    final configs = List<CurveAnimationConfig>.empty(growable: true);
-
-    for (final phase in phases) {
-      styles.add(styleBuilder(phase, this));
-      configs.add(configBuilder(phase));
-    }
-
-    return merge(
-      BoxMix(
-        animation: PhaseAnimationConfig<BoxSpec, BoxMix>(
-          styles: styles,
-          curveConfigs: configs,
-          trigger: trigger,
-          mode: mode,
-        ),
-      ),
-    );
-  }
-
   /// Modifier instance method
   BoxMix wrap(ModifierConfig modifier) {
     return merge(BoxMix(modifierConfig: modifier));
@@ -427,6 +397,12 @@ class BoxMix extends Style<BoxSpec>
   /// Sets image decoration
   BoxMix image(DecorationImageMix value) {
     return decoration(DecorationMix.image(value));
+  }
+
+  /// Animation instance method
+  @override
+  BoxMix animate(AnimationConfig animation) {
+    return merge(BoxMix.animate(animation));
   }
 
   /// Border radius instance method

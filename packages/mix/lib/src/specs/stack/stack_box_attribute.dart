@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../animation/animation_config.dart';
+import '../../animation/animation_mixin.dart';
 import '../../core/style.dart';
 import '../../modifiers/modifier_config.dart';
 import '../../variants/variant.dart';
@@ -16,7 +17,8 @@ import 'stack_box_spec.dart';
 ///
 /// Use this class to configure the attributes of a [ZBoxSpec] and pass it to
 /// the [ZBoxSpec] constructor.
-class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
+class StackBoxMix extends Style<ZBoxSpec>
+    with Diagnosticable, StyleAnimationMixin<ZBoxSpec, StackBoxMix> {
   final BoxMix? $box;
   final StackMix? $stack;
 

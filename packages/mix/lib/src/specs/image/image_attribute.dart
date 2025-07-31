@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../animation/animation_config.dart';
+import '../../animation/animation_mixin.dart';
 import '../../core/helpers.dart';
 import '../../core/prop.dart';
 import '../../core/style.dart';
@@ -15,7 +16,8 @@ class ImageMix extends Style<ImageSpec>
     with
         Diagnosticable,
         StyleModifierMixin<ImageMix, ImageSpec>,
-        StyleVariantMixin<ImageMix, ImageSpec> {
+        StyleVariantMixin<ImageMix, ImageSpec>,
+        StyleAnimationMixin<ImageSpec, ImageMix> {
   final Prop<double>? $width;
   final Prop<double>? $height;
   final Prop<Color>? $color;
@@ -295,6 +297,7 @@ class ImageMix extends Style<ImageSpec>
   }
 
   /// Convenience method for animating the ImageSpec
+  @override
   ImageMix animate(AnimationConfig animation) {
     return merge(ImageMix.animate(animation));
   }
@@ -344,10 +347,19 @@ class ImageMix extends Style<ImageSpec>
       filterQuality: MixHelpers.merge($filterQuality, other.$filterQuality),
       colorBlendMode: MixHelpers.merge($colorBlendMode, other.$colorBlendMode),
       semanticLabel: MixHelpers.merge($semanticLabel, other.$semanticLabel),
-      excludeFromSemantics: MixHelpers.merge($excludeFromSemantics, other.$excludeFromSemantics),
-      gaplessPlayback: MixHelpers.merge($gaplessPlayback, other.$gaplessPlayback),
+      excludeFromSemantics: MixHelpers.merge(
+        $excludeFromSemantics,
+        other.$excludeFromSemantics,
+      ),
+      gaplessPlayback: MixHelpers.merge(
+        $gaplessPlayback,
+        other.$gaplessPlayback,
+      ),
       isAntiAlias: MixHelpers.merge($isAntiAlias, other.$isAntiAlias),
-      matchTextDirection: MixHelpers.merge($matchTextDirection, other.$matchTextDirection),
+      matchTextDirection: MixHelpers.merge(
+        $matchTextDirection,
+        other.$matchTextDirection,
+      ),
       animation: other.$animation ?? $animation,
       modifierConfig:
           $modifierConfig?.merge(other.$modifierConfig) ??
@@ -385,16 +397,28 @@ class ImageMix extends Style<ImageSpec>
       DiagnosticsProperty('semanticLabel', $semanticLabel, defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty('excludeFromSemantics', $excludeFromSemantics, defaultValue: null),
+      DiagnosticsProperty(
+        'excludeFromSemantics',
+        $excludeFromSemantics,
+        defaultValue: null,
+      ),
     );
     properties.add(
-      DiagnosticsProperty('gaplessPlayback', $gaplessPlayback, defaultValue: null),
+      DiagnosticsProperty(
+        'gaplessPlayback',
+        $gaplessPlayback,
+        defaultValue: null,
+      ),
     );
     properties.add(
       DiagnosticsProperty('isAntiAlias', $isAntiAlias, defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty('matchTextDirection', $matchTextDirection, defaultValue: null),
+      DiagnosticsProperty(
+        'matchTextDirection',
+        $matchTextDirection,
+        defaultValue: null,
+      ),
     );
   }
 

@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../animation/animation_config.dart';
+import '../../animation/animation_mixin.dart';
 import '../../core/directive.dart';
 import '../../core/helpers.dart';
 import '../../core/prop.dart';
@@ -27,7 +28,8 @@ class TextMix extends Style<TextSpec>
     with
         Diagnosticable,
         StyleModifierMixin<TextMix, TextSpec>,
-        StyleVariantMixin<TextMix, TextSpec> {
+        StyleVariantMixin<TextMix, TextSpec>,
+        StyleAnimationMixin<TextSpec, TextMix> {
   final Prop<TextOverflow>? $overflow;
   final MixProp<StrutStyle>? $strutStyle;
   final Prop<TextAlign>? $textAlign;
@@ -577,6 +579,7 @@ class TextMix extends Style<TextSpec>
   }
 
   /// Convenience method for animating the TextSpec
+  @override
   TextMix animate(AnimationConfig animation) {
     return merge(TextMix.animate(animation));
   }
@@ -705,14 +708,20 @@ class TextMix extends Style<TextSpec>
       DiagnosticsProperty('directive', $directives, defaultValue: null),
     );
     properties.add(
-      DiagnosticsProperty('selectionColor', $selectionColor, defaultValue: null),
+      DiagnosticsProperty(
+        'selectionColor',
+        $selectionColor,
+        defaultValue: null,
+      ),
     );
     properties.add(
-      DiagnosticsProperty('semanticsLabel', $semanticsLabel, defaultValue: null),
+      DiagnosticsProperty(
+        'semanticsLabel',
+        $semanticsLabel,
+        defaultValue: null,
+      ),
     );
-    properties.add(
-      DiagnosticsProperty('locale', $locale, defaultValue: null),
-    );
+    properties.add(DiagnosticsProperty('locale', $locale, defaultValue: null));
 
     properties.add(
       DiagnosticsProperty('directives', $directives, defaultValue: null),

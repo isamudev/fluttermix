@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../animation/animation_config.dart';
+import '../../animation/animation_mixin.dart';
 import '../../core/style.dart';
 import '../../modifiers/modifier_config.dart';
 import '../../modifiers/modifier_util.dart';
@@ -18,7 +19,10 @@ import 'flexbox_spec.dart';
 /// Use this class to configure the attributes of a [FlexBoxSpec] and pass it to
 /// the [FlexBoxSpec] constructor.
 class FlexBoxMix extends Style<FlexBoxSpec>
-    with Diagnosticable, StyleModifierMixin<FlexBoxMix, FlexBoxSpec> {
+    with
+        Diagnosticable,
+        StyleModifierMixin<FlexBoxMix, FlexBoxSpec>,
+        StyleAnimationMixin<FlexBoxSpec, FlexBoxMix> {
   final BoxMix? $box;
   final FlexMix? $flex;
 
@@ -90,13 +94,14 @@ class FlexBoxMix extends Style<FlexBoxSpec>
     return merge(FlexBoxMix.flex(value));
   }
 
-  /// Sets animation
-  FlexBoxMix animate(AnimationConfig animation) {
-    return merge(FlexBoxMix.animate(animation));
-  }
-
   FlexBoxMix variants(List<VariantStyleAttribute<FlexBoxSpec>> variants) {
     return merge(FlexBoxMix(variants: variants));
+  }
+
+  /// Sets animation
+  @override
+  FlexBoxMix animate(AnimationConfig animation) {
+    return merge(FlexBoxMix.animate(animation));
   }
 
   /// Resolves to [FlexBoxSpec] using the provided [BuildContext].
