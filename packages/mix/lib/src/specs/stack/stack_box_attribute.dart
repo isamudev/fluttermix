@@ -21,23 +21,24 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   final StackMix? $stack;
 
   const StackBoxMix({
-    this.$box,
-    this.$stack,
+    BoxMix? box,
+    StackMix? stack,
     super.modifierConfig,
     super.animation,
     super.variants,
 
     super.inherit,
-  });
+  }) : $box = box,
+       $stack = stack;
 
   /// Factory for box properties
   factory StackBoxMix.box(BoxMix value) {
-    return StackBoxMix($box: value);
+    return StackBoxMix(box: value);
   }
 
   /// Factory for stack properties
   factory StackBoxMix.stack(StackMix value) {
-    return StackBoxMix($stack: value);
+    return StackBoxMix(stack: value);
   }
 
   /// Factory for animation
@@ -60,8 +61,8 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
   /// ```
   static StackBoxMix value(ZBoxSpec spec) {
     return StackBoxMix(
-      $box: BoxMix.maybeValue(spec.box),
-      $stack: StackMix.maybeValue(spec.stack),
+      box: BoxMix.maybeValue(spec.box),
+      stack: StackMix.maybeValue(spec.stack),
     );
   }
 
@@ -129,8 +130,8 @@ class StackBoxMix extends Style<ZBoxSpec> with Diagnosticable {
     if (other == null) return this;
 
     return StackBoxMix(
-      $box: $box?.merge(other.$box) ?? other.$box,
-      $stack: $stack?.merge(other.$stack) ?? other.$stack,
+      box: $box?.merge(other.$box) ?? other.$box,
+      stack: $stack?.merge(other.$stack) ?? other.$stack,
       modifierConfig:
           $modifierConfig?.merge(other.$modifierConfig) ??
           other.$modifierConfig,
@@ -180,8 +181,8 @@ class StackBoxSpecUtility {
     List<VariantStyleAttribute<ZBoxSpec>>? variants,
   }) {
     return StackBoxMix(
-      $box: box,
-      $stack: stack,
+      box: box,
+      stack: stack,
       modifierConfig: modifierConfig,
       animation: animation,
       variants: variants,
